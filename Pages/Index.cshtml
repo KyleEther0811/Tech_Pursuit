@@ -1,0 +1,99 @@
+﻿@page
+@using Microsoft.EntityFrameworkCore.Storage
+@using Tech_Pursuit.Models
+@model IndexModel
+@{
+
+    ViewData["Title"] = "Home page";
+    // Display Job Postings Table
+    //string[] TableHeaders = new string[] {"Company Name"
+    //  ,"Job Title"
+    //  ,"Required Skills"
+    //  ," City "
+    //  ," State "
+    //  ," "};
+}
+@*Table to Display Job Properties at top of page*@
+@*<h1></h1>
+<div class="table">
+    <table class=" = table table-bordered table-hover">
+        <thead>
+            <tr>
+                @{ foreach(var head in TableHeaders)
+                    {
+                      <th>@head</th>
+                    }
+                }                
+            </tr>
+        </thead>              
+    </table>
+</div>*@
+
+@*Add Search text box and btn to filter specific job skills and titles*@
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search Jobs:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn-sm btn-primary" /> |
+            <a class="btn-sm btn-primary" asp-page="./Index">View Full List</a>
+        </p>
+    </div>
+</form>
+@*Table to filter and sort jobs by Title, Description and Skills*@
+
+@*<div class="row text-white bg-primary mb-3" style="max-width: 100%;">
+    <div class="card-body text-wrap">
+        
+            <h4 class="card-title">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.JobTitleSort">
+                    @Html.DisplayNameFor(model => model.jobList[0].JobTitle)
+                </a>
+            </h4>
+            <h4 class="card-title">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.RequiredSkillsSort">
+                    @Html.DisplayNameFor(model => model.jobList[0].RequiredSkills)
+                </a>
+            </h4>
+            <h4 class="card-title"
+                <a asp-page="./Index" asp-route-sortOrder="@Model.JobDescriptionSort">
+                    @Html.DisplayNameFor(model => model.jobList[0].JobDescription)
+                </a>
+            </h4>
+            <h4 class="card-title">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.JobDescriptionSort">
+                    @Html.DisplayNameFor(model => model.jobList[0].City)
+                </a>
+            </h4>
+            <h4 class="card-title">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.JobDescriptionSort">
+                    @Html.DisplayNameFor(model => model.jobList[0].State)
+                </a>
+            </h4>           
+        
+    </div>
+    </div>*@
+    <h1 ID="IndexHeader" class="text-center" style=" text-shadow:2px; text-shadow:inherit; color:#378dfc">
+  Pursue
+  <small style="color:#444b40;" class="text-center text-muted">your new role.</small>
+</h1>
+        @foreach (var job in Model.jobList)
+        {
+        <div class="card text-white bg-primary mb-3" style="max-width: 100%;">
+            <div class="card-body text-wrap">
+                <p class="card-text">
+                    @Html.DisplayFor(modelItem => job.JobTitle)
+                </p>
+                <p class="card-text">
+                    @Html.DisplayFor(modelItem => job.RequiredSkills)
+                </p>  
+                <p class="card-text">
+                    @Html.DisplayFor(modelItem => job.JobDescription)
+                </p>                
+                <p class="card-text">
+                    @Html.DisplayFor(modelItem => job.City), @Html.DisplayFor(modelItem => job.State)
+                </p>            
+                <a> <a class="btn-sm btn-outline-warning" asp-page="./Jobs/Details" asp-route-id="@job.Id">View Listing</a> </a>                    
+    </div>
+</div>
+}

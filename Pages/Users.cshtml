@@ -1,0 +1,88 @@
+﻿@page
+@using Microsoft.EntityFrameworkCore.Storage
+@using Tech_Pursuit.Models
+@model UserModel
+@{
+
+    ViewData["Title"] = "Home page";
+    // Display Job Postings Table
+    string[] TableHeaders = new string[] {"First Name"
+      ,"Last Name"
+      ,"Job Title"
+      ," City "
+      ," State "
+      ," "};
+}
+
+@*Add Search text box and btn to filter specific job skills and titles*@
+<form asp-page="./Users" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search Jobs:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn-sm btn-primary" /> |
+            <a class="btn-sm btn-primary" asp-page="./Users">View Full List</a>
+        </p>
+    </div>
+</form>
+@*Table to filter and sort jobs by Title, Description and Skills*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Users" asp-route-sortOrder="@Model.JobTitleSort">
+                    @Html.DisplayNameFor(model => model.userList[0].FirstName)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Users" asp-route-sortOrder="@Model.RequiredSkillsSort">
+                    @Html.DisplayNameFor(model => model.userList[0].LastName)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Users" asp-route-sortOrder="@Model.JobDescriptionSort">
+                    @Html.DisplayNameFor(model => model.userList[0].JobTitle)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Users" asp-route-sortOrder="@Model.JobDescriptionSort">
+                    @Html.DisplayNameFor(model => model.userList[0].City)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Users" asp-route-sortOrder="@Model.JobDescriptionSort">
+                    @Html.DisplayNameFor(model => model.userList[0].State)
+                </a>
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.userList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => user.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.LastName)
+                </td>  
+                <td>
+                    @Html.DisplayFor(modelItem => user.JobTitle)
+                </td>                
+                <td>
+                    @Html.DisplayFor(modelItem => user.City)
+                </td>  
+                <td>
+                    @Html.DisplayFor(modelItem => user.State)
+                </td>  
+                <td> 
+                    <a class="btn-sm btn-outline-primary" asp-page="/ProfileView" asp-route-id="@user.UserName.ToString()">View Profile</a>
+                </td>   
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+    

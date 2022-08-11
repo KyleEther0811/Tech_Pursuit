@@ -1,0 +1,101 @@
+﻿@page
+@model Tech_Pursuit.Pages.Jobs.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Job Details</h1>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="float-end">
+    @if(Model.JobModel.UserID == User.Identity.Name)
+    {  <a class="btn btn-sm btn-outline-info ms-1=" asp-page="./Apps" asp-route-id="@Model.JobModel.Id">View Applicants</a> 
+       <a class="btn btn-sm btn-outline-warning ms-1 text-dark" asp-page="./Edit" asp-route-id="@Model.JobModel?.Id">Edit Listing</a>}
+       <a class="btn btn-sm btn-outline-primary ms-1" asp-page="/Index">Back to List</a>
+    @if(Model.JobModel.UserID != User.Identity.Name)
+    {
+    <form method="post">
+        <input type="hidden" asp-for="JobModel.Id"/>
+        <button class="btn btn-sm btn-outline-danger ms-1" type="submit">Apply</button> 
+    </form>
+   
+    }
+ 
+   
+</div>
+  <div>
+    <h4>@Html.DisplayFor(model => model.JobModel.JobTitle)</h4>
+    <dl class="row text-wrap" style="float:left; width:30%">         
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.JobModel.CompanyName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobModel.CompanyName)
+        </dd>
+        <dt class="col-sm-6">            
+            @Html.DisplayNameFor(model => model.JobModel.AboutCompany)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobModel.AboutCompany)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.JobModel.CompanyWebsite)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobModel.CompanyWebsite)
+        </dd>                              
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.JobModel.City)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobModel.City)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.JobModel.State)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobModel.State)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.JobModel.PayRate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobModel.PayRate)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.JobModel.Benefits)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobModel.Benefits)
+        </dd>           
+    </dl>
+    </div>
+    <div class="column border">
+    <dl class="flex-md-column text-md-center text-wrap" style="float:left;width:40%; margin-left:30px">
+        <dt class="col-md">
+            @Html.DisplayNameFor(model => model.JobModel.JobTitle)
+        </dt>
+        <dd class="col-md">
+            @Html.DisplayFor(model => model.JobModel.JobTitle)
+        </dd>
+        <dt class="col-md">
+            @Html.DisplayNameFor(model => model.JobModel.JobDescription)
+        </dt>
+        <dd class="col-md">
+            @Html.DisplayFor(model => model.JobModel.JobDescription)
+        </dd>
+         <dt class="col-md">
+            @Html.DisplayNameFor(model => model.JobModel.RequiredSkills)
+        </dt>
+        <dd class="col-md">
+            @Html.DisplayFor(model => model.JobModel.RequiredSkills)
+        </dd>
+    </dl>
+  </div>
+  
+   
+
+
+ 
+
+

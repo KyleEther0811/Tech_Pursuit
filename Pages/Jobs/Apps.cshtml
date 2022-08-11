@@ -1,0 +1,33 @@
+﻿@page
+@model Tech_Pursuit.Pages.Jobs.AppsModel
+@{
+    int num = 0;
+}
+@foreach (var u in Model.AppUsers)
+{   
+    num++;
+    
+    <hr style="margin-bottom:20px; margin-top:20px; visibility:hidden;"/>   
+        <div class="flex-child green"> 
+            <h6 style="padding-left:10px; padding-top:5px;">Applicant - @num</h6>
+    <div class="col-md-12 text-wrap" style="text-align:center; padding-left:20px; padding-right:20px; padding-top:40px;" >      
+         <h1>@Html.DisplayTextFor(model => u.FirstName) @Html.DisplayTextFor(model => u.LastName) </h1> 
+         <h4>@Html.DisplayTextFor(model => u.HeadLine)</h4>
+    <center><h5>@Html.DisplayTextFor(model => u.JobTitle)</h5></center>
+  <p>@Html.DisplayTextFor(model => u.City), @Html.DisplayTextFor(model => u.State) </p>
+  <p>@Html.DisplayTextFor(model => u.AboutMe)</p>
+  <div class="socialmedia">   
+    <a href="@u.GitHub" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-github"></ion-icon></a>
+    <a href="@u.LinkedIn" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
+    <a href="mailto:@u.UserName" target="_blank"><ion-icon name="mail"></ion-icon></a>
+  </div>       
+    </div> 
+    </div> 
+<hr style="margin-bottom:20px; margin-top:20px;"/>   
+
+}
+@section Scripts {
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<partial name="_ValidationScriptsPartial" />
+}

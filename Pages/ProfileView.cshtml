@@ -1,0 +1,30 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity.UI.V4.Pages.Account.Manage.Internal
+@model ProfileView
+@{
+    ViewData["Title"] = "Edit Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;     
+}
+<h3>@ViewData["Title"]</h3>
+
+
+ <div class="card">     
+    <div class="col-md-12 text-wrap" style="text-align:center; padding-left:20px; padding-right:20px; padding-top:40px;" >      
+         <h1>@Html.DisplayTextFor(model => model.ProfileUser.FirstName) @Html.DisplayTextFor(model => model.ProfileUser.LastName) </h1> 
+         <h4>@Html.DisplayTextFor(model => model.ProfileUser.HeadLine)</h4>
+    <center><h5>@Html.DisplayTextFor(model => model.ProfileUser.JobTitle)</h5></center>
+  <p>@Html.DisplayTextFor(model => model.ProfileUser.City) @Html.DisplayTextFor(model => model.ProfileUser.State) </p>
+  <p>@Html.DisplayTextFor(model => model.ProfileUser.AboutMe)</p>
+  <div class="socialmedia">   
+    <a href="https://github.com/" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
+    <a href="https://www.linkedin.com/" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
+    <a href="mailto:@Model.ProfileUser.Email" target="_blank"><ion-icon name="mail"></ion-icon></a>
+  </div>       
+    </div> 
+    </div> 
+  
+    @section Scripts {
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<partial name="_ValidationScriptsPartial" />
+}

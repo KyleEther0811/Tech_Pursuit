@@ -1,0 +1,119 @@
+html {
+  font-size: 14px;
+  
+}
+
+@media (min-width: 768px) {
+html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px; 
+}
+div {
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: initial;  
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem; /* Footer height */
+}
+
+
+/*#EditDetails {
+    width: 65%;
+    height: 100%;
+    text-overflow: ellipsis;
+    float:left;
+    
+}
+
+#ProfilePage {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 50%;
+    text-align: center;
+    white-space: pre-wrap;
+    float: right;
+}*/
+
+.title {
+    color: grey;
+    font-size: 18px;
+}
+
+button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+button:hover, a:hover {
+        opacity: 0.7;
+    }
+
+/*.leftside, .rightside {
+        
+        height:100vh;      
+        display:inline-block;
+        margin:auto;
+        
+    }
+
+.leftside {
+    width: 50%;
+    text-overflow: ellipsis;
+    margin:auto;
+    
+}
+
+.rightside {
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    white-space: pre-wrap;
+    margin:auto;
+   
+}*/
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    border: 2px solid blue;
+}
+
+.flex-child:first-child {          
+        width: 30%;
+        margin-right: 20px;      
+}
+
+.flex-child:nth-child(2) {
+        width: 50%;
+        margin-right: 20px;
+}
+
+
+

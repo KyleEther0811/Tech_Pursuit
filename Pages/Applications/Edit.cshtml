@@ -1,0 +1,45 @@
+﻿@page
+@model Tech_Pursuit.Pages.Applications.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Application</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Application.Id" />
+            <div class="form-group">
+                <label asp-for="Application.JobId" class="control-label"></label>
+                <input asp-for="Application.JobId" class="form-control" />
+                <span asp-validation-for="Application.JobId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Application.UserId" class="control-label"></label>
+                <input asp-for="Application.UserId" class="form-control" />
+                <span asp-validation-for="Application.UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Application.CoverLetter" class="control-label"></label>
+                <input asp-for="Application.CoverLetter" class="form-control" />
+                <span asp-validation-for="Application.CoverLetter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
